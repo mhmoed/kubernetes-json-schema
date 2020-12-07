@@ -1,0 +1,80 @@
+{
+  "additionalProperties": false,
+  "description": "MinioPolicy specifies a MinIO policy.",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+      "enum": [
+        "mobilab.org/v1alpha1"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "enum": [
+        "MinioPolicy"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "spec": {
+      "additionalProperties": false,
+      "properties": {
+        "statement": {
+          "description": "Policy spec.",
+          "type": "array",
+          "items": {
+            "description": "Statement item.",
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "description": "S3 action."
+                }
+              },
+              "effect": {
+                "description": "Action allow or deny.",
+                "type": "string",
+                "enum": [
+                  "Allow",
+                  "Deny"
+                ]
+              },
+              "resource": {
+                "description": "Resources to apply actions to with effect.",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "description": "Resource ARN."
+                }
+              }
+            },
+            "required": [
+              "action",
+              "effect",
+              "resource"
+            ]
+          }
+        }
+      },
+      "required": [
+        "statement"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "metadata"
+  ],
+  "type": "object"
+}
