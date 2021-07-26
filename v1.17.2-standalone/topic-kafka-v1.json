@@ -1,0 +1,56 @@
+{
+    "openAPIV3Schema": {
+        "type": "object",
+        "properties": {
+            "spec": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "partitions": {
+                        "type": "integer"
+                    },
+                    "replication": {
+                        "type": "integer"
+                    },
+                    "config": {
+                        "type": "object",
+                        "x-kubernetes-preserve-unknown-fields": true
+                    },
+                    "acl": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "principal": {
+                                    "type": "string"
+                                },
+                                "operation": {
+                                    "type": "string",
+                                    "enum": [
+                                        "Any",
+                                        "All",
+                                        "Read",
+                                        "Write",
+                                        "Create",
+                                        "Delete",
+                                        "Alter",
+                                        "Describe",
+                                        "ClusterAction",
+                                        "DescribeConfigs",
+                                        "AlterConfigs",
+                                        "IdempotentWrite"
+                                    ]
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "additionalProperties": false
+    }
+}

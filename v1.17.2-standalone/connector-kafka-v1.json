@@ -1,0 +1,102 @@
+{
+    "openAPIV3Schema": {
+        "type": "object",
+        "properties": {
+            "spec": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "secrets": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "valueFrom": {
+                                    "type": "object",
+                                    "properties": {
+                                        "secretKeyRef": {
+                                            "type": "object",
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "key": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    },
+                    "config": {
+                        "type": "object",
+                        "x-kubernetes-preserve-unknown-fields": true,
+                        "properties": {
+                            "connector": {
+                                "type": "object",
+                                "properties": {
+                                    "class": {
+                                        "type": "string"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            "tasks": {
+                                "type": "object",
+                                "properties": {
+                                    "max": {
+                                        "type": "string"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            "errors": {
+                                "type": "object",
+                                "properties": {
+                                    "tolerance": {
+                                        "type": "string"
+                                    },
+                                    "log": {
+                                        "type": "object",
+                                        "properties": {
+                                            "enable": {
+                                                "type": "boolean"
+                                            },
+                                            "include": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "messages": {
+                                                        "type": "boolean"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "additionalProperties": false
+            },
+            "status": {
+                "type": "object"
+            }
+        },
+        "additionalProperties": false
+    }
+}
